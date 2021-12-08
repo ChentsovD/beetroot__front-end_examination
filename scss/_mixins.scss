@@ -1,0 +1,12 @@
+@mixin flex($flexDirection:row, $justifyContent:flex-start, $alignItem:flex-start) {
+    display: flex;
+    flex-direction: $flexDirection;
+    justify-content: $justifyContent;
+    align-items: $alignItem;
+}
+
+@mixin sectionTitle{
+     font-family: "Mariupol Medium", sans-serif;
+     margin-bottom: 10px;
+      font-size: 25px;
+}

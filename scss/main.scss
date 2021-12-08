@@ -1,0 +1,1142 @@
+@import "fonts";
+@import "variables";
+@import "mixins";
+
+// Normalize///////////////////
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+}
+li {
+  list-style: none;
+}
+body {
+  font-family: "Mariupol Regular", sans-serif;
+}
+
+// Header///////////////////
+.header {
+  width: 100%;
+  border-bottom: 1px $mainColorGrey solid;
+  position: fixed;
+  top: 0;
+  z-index: 5;
+  &__container {
+    margin: 0 auto;
+    width: 94%;
+    height: 100%;
+    max-width: 1366px;
+    @include flex(row, space-between,center );
+    position: relative;
+  }
+  &__block--top {
+    height: 35px;
+    background-color: $mainColorBlue;
+    font-size: 10px;
+  }
+  &__adress-link,
+  &__tel-link {
+    color: $mainColorWhite;
+  }
+  &__block--bottom {
+    height: 65px;
+    background-color: $mainColorWhite;
+  }
+  &__logo {
+    @include flex(row, flex-start ,center );
+    padding-right: 80px;
+    gap: 5px;
+    @media screen and (max-width: 1200px) {
+      padding-right: 20px;
+    }
+    @media screen and (max-width: 992px) {
+      padding-right: 0;
+    }
+    .logo-img-2 {
+      @media screen and (max-width: 576px) {
+        width: 150px;
+      }
+    }
+    .logo-img-1 {
+      @media screen and (max-width: 576px) {
+        width: 60px;
+      }
+    }
+  }
+}
+
+//Navigation///////////////////
+.nav {
+  @include flex(row, space-between,);
+  flex-grow: 1;
+  @media screen and (max-width: 992px) {
+    position: absolute;
+    flex-direction: column;
+    background-color: $mainColorWhite;
+    padding: 30px 20px 0;
+    right: -21px;
+    top: 65px;
+    border: $mainColorGrey solid 1px;
+    display: none;
+  }
+  @media screen and (min-width: 993px) {
+    display: flex !important;
+  }
+  &__link {
+    color: $mainTextColor;
+    text-transform: uppercase;
+    font-size: calc(10px + 5 * (100vw / 1800));
+    
+    @media screen and (max-width: 992px) {
+      font-size: 20px;
+    }
+  }
+  .animal-id {
+    color: $mainColorBlue;
+    font-family: "Mariupol Bold", sans-serif;
+  }
+  &__item {
+    position: relative;
+    &:hover::after{
+      content: "";
+      width: 100%;
+      height: 2px;
+      position: absolute;
+      background-color: $mainColorBlue;
+      left: 0;
+      bottom: - 5px;
+    }
+    @media screen and (max-width: 992px) {
+      margin-bottom: 30px;
+    }
+  }
+}
+.burger {
+  width: 40px;
+  height: 40px;
+  border: 1px solid $mainColorBlue;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  display: none;
+  transition: linear 0.2s;
+  @media screen and (max-width: 992px) {
+    display: flex;
+  }
+  &__icon {
+    width: 30px;
+    height: 3px;
+    background-color: $mainColorBlue;
+    position: relative;
+    &::before {
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: -6px;
+      left: 0;
+      background-color: $mainColorBlue;
+    }
+    &::after {
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 6px;
+      left: 0;
+      background-color: $mainColorBlue;
+    }
+  }
+  &--open {
+    .burger__icon {
+      transform: rotate(45deg);
+      &::after {
+        width: 0;
+      }
+      &::before {
+        top: 0;
+        transform: rotate(90deg);
+      }
+    }
+  }
+}
+
+//Main///////////////////
+.main {
+  margin-top: 100px;
+}
+
+//Footer///////////////////
+.footer {
+  background-color: $mainColorBlue;
+  &__container {
+    margin: 0 auto;
+    width: 94%;
+    height: 100%;
+    max-width: 1366px;
+  }
+  &__block--top {
+    padding: 40px 0 45px;
+    @include flex(row, space-between, );
+    border-bottom: #064399 1px solid;
+    @media screen and (max-width: 992px) {
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    @media screen and (max-width: 576px) {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 40px;
+    }
+    .footer__logo {
+      max-width: 170px;
+      @media screen and (max-width: 992px) {
+        display: none;
+      }
+    }
+    .footer-list {
+      &__item {
+        margin-bottom: 20px;
+      }
+      &__item:first-child > .footer-list__link {
+        text-transform: uppercase;
+      }
+      &__link {
+        color: $mainColorWhite;
+        font-size: 15px;
+      }
+    }
+  }
+  &__block--bottom {
+    @include flex(row, space-between, );
+    padding: 20px 0;
+    color: $mainColorWhite;
+  }
+}
+.help-btn {
+  width: 220px;
+  height: 50px;
+  background-color: #feda00;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #fed8005b;
+  &__link {
+    width: 100%;
+    height: 100%;
+    @include flex(row, center,center );
+    color: $mainTextColor;
+    font-size: 20px;
+  }
+}
+
+//Section Banner///////////////////
+.section-banner {
+  max-width: 100%;
+  margin: 0 auto;
+  height: 398px;
+  display: flex;
+  @media screen and (max-width: 576px) {
+    flex-direction: column;
+  }
+  &__left-block {
+    width: 50%;
+    @include flex(column, center, center );
+    @media screen and (max-width: 576px) {
+      height: 100%;
+      width: 100%;
+      background-color: $mainColorGrey;
+      background-image: url(../img/banner-img.jpg);
+      background-size: 185%;
+      background-position: center;
+      background-size: cover;
+    }
+  }
+  &__right-block {
+    width: 50%;
+    background-image: url(../img/banner-img.jpg);
+    background-size: cover;
+    background-position: center;
+    @media screen and (max-width: 576px) {
+      display: none;
+    }
+  }
+  .banner__title {
+    max-width: 440px;
+    text-align: center;
+    font-family: "Mariupol Bold";
+    font-size: calc(25px + 15 * (100vw / 1360));
+    margin-bottom: 20px;
+    @media screen and (max-width: 576px) {
+      color: $mainColorWhite;
+    }
+  }
+  .banner__subtitle {
+    font-size: 20px;
+    margin-bottom: 25px;
+    @media screen and (max-width: 576px) {
+      color: $mainColorWhite;
+    }
+  }
+}
+
+//Section About Us///////////////////
+.section-about-us {
+  padding: 120px 0;
+  @include flex(column, center, center );
+  background-color: $mainColorGrey;
+  background-image: url(../img/pow-bg.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  @media screen and (max-width: 760px) {
+    padding: 120px 20px;
+  }
+  @media screen and (max-width: 576px) {
+    padding: 60px 20px;
+  }
+  .about-us {
+    &__title {
+      @include sectionTitle;
+      margin-bottom: 25px;
+    }
+    &__text {
+      max-width: 626px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    &__list {
+      max-width: 626px;
+      @include flex(row, space-between, );
+      color: $mainColorBlue;
+      font-size: 15px;
+      gap: 30px;
+      @media screen and (max-width: 576px) {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+      }
+      &-item {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+    }
+  }
+}
+
+//Section Our dogs///////////////////
+.ours-dogs {
+  text-align: center;
+  padding: 60px 0 120px;
+  &__title {
+    @include sectionTitle;
+  }
+  &__subtitle {
+    font-size: 20px;
+    font-family: "Mariupol Regular", sans-serif;
+  }
+  &__slider {
+    margin-bottom: 40px;
+  }
+  &__btn {
+    width: 140px;
+    height: 35px;
+    background-color: $mainColorBlue;
+    border-radius: 5px;
+    margin: 0 auto;
+    box-shadow: 0 0 15px $borderColor;
+    .btn__link {
+      width: 100%;
+      height: 100%;
+      @include flex(row, center, center );
+      color: $mainColorWhite;
+      font-size: 15px;
+    }
+  }
+  .ours-dogs__slide {
+    width: 180px;
+    height: 260px;
+    border: solid 1px $mainColorGrey;
+    border-radius: 5px;
+    min-width: 0;
+    .ours-dogs__img {
+      width: 100%;
+      height: auto;
+    }
+    .dog-info {
+      display: flex;
+      flex-direction: column;
+      &__name {
+        font-size: 20px;
+        margin-bottom: 5px;
+      }
+      &__age {
+        font-size: 10px;
+        color: $mainColorGrey;
+        margin-bottom: 10px;
+      }
+      &__more {
+        text-decoration: underline;
+        color: $mainColorBlue;
+      }
+    }
+  }
+  .ours-dogs__slider {
+    margin: 0 auto;
+    max-width: 1060px;
+    padding: 40px 0;
+    position: relative;
+    @media screen and (max-width: 1200px) {
+      max-width: 840px;
+    }
+    @media screen and (max-width: 992px) {
+      max-width: 620px;
+    }
+    @media screen and (max-width: 760px) {
+      max-width: 400px;
+    }
+    @media screen and (max-width: 576px) {
+      max-width: 180px;
+    }
+    .slick-list {
+      overflow: hidden;
+    }
+    .slick-track {
+      display: flex;
+      gap: 40px;
+    }
+    .slide {
+      width: 180px;
+      min-height: 260px;
+      min-width: 0;
+      border: solid 1px $mainColorGrey;
+      border-radius: 5px;
+    }
+    .slick-slide {
+      max-width: 180px;
+    }
+    .slick-arrow {
+      width: 56px;
+      height: 56px;
+      border: none;
+      position: absolute;
+      font-size: 0;
+      background-image: url(../img/svg/arrow-slider.svg);
+    }
+    .slick-prev {
+      left: -100px;
+      top: calc(50% - 28px);
+      transform: rotate(180deg);      
+    }
+    .slick-next {
+      right: -100px;
+      top: calc(50% - 28px);
+      z-index: 3;
+    }
+    .slick-dots{
+      @include flex(row, center,);
+      gap: 10px;
+      margin: 20px;  
+      button{
+        width: 10px;
+        height: 10px;
+        font-size: 0;
+        border-radius: 50%;
+        border: 1px solid $mainColorBlue;
+        background-color: $mainColorWhite;
+      }
+      .slick-active>button{
+        background-color: $mainColorBlue;
+      }
+      
+    }
+  }
+}
+
+//Section Donate///////////////////
+.donate {
+  padding: 0 20px 60px;
+  &__block {
+    max-width: 1060px;
+    margin: 0 auto;
+    display: flex;
+    margin-bottom: 40px;
+    @media screen and (max-width: 760px) {
+      flex-wrap: wrap;
+    }
+    &--left {
+      width: 58%;
+      min-height: 400px;
+      background-image: url(../img/donate-bg-yellow.jpg);
+      border-radius: 10px 0 0px 10px;
+      padding: 50px 60px 30px 50px;
+      @media screen and (max-width: 760px) {
+        width: 100%;
+        border-radius: 10px 10px 0 0;
+        background-size: 110%;
+      }
+      @media screen and (max-width: 576px) {
+        padding: 20px 30px 15px 25px;
+        height: auto;
+      }
+      .donate-form {
+        width: 100%;
+        height: 100%;
+        @include flex(column,);
+        position: relative;
+        .first-row {
+          width: 100%;
+          @include flex(row, space-between);
+          margin-bottom: 30px;
+          @media screen and (max-width: 576px) {
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+          }
+          .donate-form__title {
+            font-size: 25px;
+            max-width: 140px;
+            @media screen and (max-width: 576px) {
+              max-width: none;
+            }
+          }
+          &__inputs-block {
+            width: 65%;
+            display: flex;
+            flex-wrap: wrap;
+            position: relative;
+            @media screen and (max-width: 576px) {
+              width: 100%;
+            }
+
+            &::after {
+              content: "грн";
+              color: $mainTextColor;
+              position: absolute;
+              right: 20px;
+              top: 17px;
+              font-size: 15px;
+            }
+            .donate-form {
+              &__input {
+                width: 100%;
+                height: 55px;
+                padding-left: 25px;
+                font-size: 20px;
+                margin-bottom: 15px;
+              }
+              &__radio {
+                display: none;
+                &:checked
+                  + .donate-form__lable--1
+                  > .donate-form__custom-radio--1 {
+                  background-color: $mainColorBlue;
+                  border: 5px solid $mainColorWhite;
+                }
+                &:checked
+                  + .donate-form__lable--2
+                  > .donate-form__custom-radio--2 {
+                  background-color: $mainColorBlue;
+                  border: 5px solid $mainColorWhite;
+                }
+              }
+
+              &__lable {
+                @include flex(row, flex-start, center);
+                font-size: 13px;
+
+                &:first-of-type {
+                  padding-right: 25px;
+                }
+              }
+              &__custom-radio {
+                width: 25px;
+                height: 25px;
+                background-color: $mainColorWhite;
+                margin-right: 7px;
+                border-radius: 50%;
+                box-shadow: 0 0 0 1px $borderColor;
+              }
+            }
+          }
+        }
+        &__second-row {
+          @include flex(row, space-between,);
+          width: 100%;
+          border-top: 1px solid $borderColor;
+          padding-top: 30px;
+          gap: 20px;
+          @media screen and (max-width: 576px) {
+            flex-direction: column;
+            justify-content: center;
+            margin-bottom: 100px;
+          }
+          .donate-form {
+            &__lable-disc {
+              width: 33.3%;
+              display: flex;
+              font-size: 13px;
+              color: $mainColorBlue;
+              gap: 7px;
+              @media screen and (max-width: 576px) {
+                width: 100%;
+              }
+            }
+            &__checkbox {
+              display: none;
+              &:checked
+                + .donate-form__lable-disc
+                > .donate-form__custom-checkbox {
+                background: $mainColorBlue;
+                background-image: url(../img/cheched.svg);
+                background-repeat: no-repeat;
+                background-position: center;
+              }
+            }
+            &__custom-checkbox {
+              min-width: 25px;
+              height: 25px;
+              border-radius: 5px;
+              background-color: $mainColorWhite;
+            }
+          }
+        }
+        &__third-row {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          .donate__submit {
+            width: 180px;
+            height: 55px;
+            background-color: $mainColorBlue;
+            border: none;
+            border-radius: 5px;
+            color: $mainColorWhite;
+            font-size: 20px;
+          }
+        }
+      }
+    }
+    &--right {
+      width: 42%;
+      min-height: 400px;
+      background-image: url(../img/donate-bg-grey.jpg);
+      background-size: cover;
+      padding: 30px 25px 20px 16px;
+      @include flex(column, space-between,);
+      @media screen and (max-width: 760px) {
+        width: 100%;
+        height: auto;
+        border-radius: 0 0 10px 10px;
+        background-size: 110%;
+      }
+      .last-donate {
+        &__title {
+          font-size: 25px;
+          margin-bottom: 25px;
+        }
+        .last-donator {
+          background-color: $mainColorWhite;
+          border-radius: 10px;
+          padding: 15px 20px 15px 40px;
+          margin-bottom: 5px;
+          font-size: 15px;
+          &__first-row {
+            @include flex(row, space-between,);
+          }
+          &__name {
+            font-size: 15px;
+            position: relative;
+            &::before {
+              content: "";
+              width: 17px;
+              height: 16px;
+              position: absolute;
+              left: -25px;
+              background-image: url(../img/svg/hart.svg);
+            }
+          }
+          &__amount {
+            font-family: "Mariupol Medium", sans-serif;
+          }
+          &__second-row {
+            margin-top: 5px;
+          }
+        }
+      }
+      .donate__info {
+        font-size: 15px;
+        line-height: 20px;
+        font-family: "Mariupol Medium", sans-serif;
+      }
+      .donate__link {
+        color: $mainColorBlue;
+        text-decoration: underline;
+      }
+    }
+  }
+  &__text {
+    text-align: center;
+    .donate-text {
+      &__text--top {
+        font-size: 25px;
+        max-width: 620px;
+        margin: 0 auto;
+        margin-bottom: 15px;
+      }
+      &__text--bottom {
+        font-size: 20px;
+        max-width: 620px;
+        margin: 0 auto;
+      }
+      &__link {
+        color: $mainColorBlue;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+//Section About Dogs///////////////////
+.section-about-dogs {
+  text-align: center;
+  padding: 60px 20px;
+  .about-dogs {
+    &__title {
+      @include sectionTitle;
+    }
+    &__subtitle {
+      font-size: 20px;
+      font-family: "Mariupol Regular", sans-serif;
+      margin-bottom: 40px;
+    }
+    &__blocks {
+      max-width: 1284px;
+      @include flex(row, center, center);
+      margin: 0 auto;
+      flex-wrap: wrap;
+      gap: 40px;
+      .info-block {
+        width: 290px;
+        height: 410px;
+        background-color: $mainColorGrey;
+        border-radius: 5px;
+        @include flex(column, flex-start, center);
+        margin: 0 auto;
+        &__img-circle {
+          margin: 40px 0 30px;
+          width: 150px;
+          height: 150px;
+          border-radius: 50%;
+          border: 1px solid $borderColor;
+          background-color: $mainColorWhite;
+        }
+        &__text {
+          max-width: 250px;
+          font-size: 15px;
+          line-height: 20px;
+        }
+      }
+    }
+  }
+}
+
+//Section Reviews///////////////////
+.section-reviews {
+  padding: 60px 0;
+  .reviews__slide {
+    max-width: 1060px;
+    display: flex;
+    margin: 0 auto;
+  }
+  .reviews {
+    &__slider {
+      max-width: 1060px;
+      padding: 0 20px;
+      @media screen and (max-width: 992px) {
+        padding: 0;      
+      }
+    }
+    &__img {
+      width: 50%;
+      height: 100%;
+      background-image: url(../img/review-img-1.jpg);
+      background-size: cover;
+      border-radius: 10px 0 0 10px;
+      @media screen and (max-width: 992px) {
+        display: none;
+      }
+    }
+    &__text-block {
+      width: 50%;
+      min-height: 450px;
+      background-color: $mainColorBlue;
+      border-radius: 0 10px 10px 0;
+      color: $mainColorWhite;
+      text-align: center;
+      padding: 60px 20px;
+      @media screen and (max-width: 992px) {
+        width: 100%;
+        border-radius: 10px;
+        padding: 70px 40px;       
+      }
+    }
+    &__title {
+      text-transform: uppercase;
+      font-size: 25px;
+      max-width: 350px;
+      margin: 0 auto 60px;
+      font-family: "Mariupol Medium", sans-serif;
+    }
+    &__text {
+      margin-top: 30px;
+      font-size: 20px;
+    }
+    &__name {
+      margin-top: 20px;
+      font-size: 20px;
+      font-family: "Mariupol Bold", sans-serif;
+    }
+  }
+  .slick-slider {
+    position: relative;
+    margin: 0 auto;
+    min-width: 0;
+  }
+  .slick-list {
+    overflow: hidden;
+  }
+  .slick-track {
+    display: flex;
+    gap: 20px;
+  }
+  /* .slick-slide{
+    margin: 0 40px;
+  } */
+  .slick-arrow {
+    width: 56px;
+    height: 56px;
+    border: none;
+    position: absolute;
+    font-size: 0;
+    background-image: url(../img/svg/arrow-slider.svg);
+    z-index: 3;
+  }
+  .slick-prev {
+    left: -56px;
+    top: calc(50% - 28px);
+    transform: rotate(180deg);
+  }
+  .slick-next {
+    right: -56px;
+    top: calc(50% - 28px);
+  }
+  .slick-dots{
+    @include flex(row, center,);
+    gap: 10px;
+    margin: 20px;    
+    button{
+      width: 10px;
+      height: 10px;
+      font-size: 0;
+      border-radius: 50%;
+      border: 1px solid $mainColorBlue;
+      background-color: $mainColorWhite;
+    }
+    .slick-active>button{
+      background-color: $mainColorBlue;
+    }    
+  }
+}
+
+//Section Invitation///////////////////
+.section-invitation {
+  padding: 60px 20px;
+  .invitation {
+    &__block {
+      max-width: 1060px;
+      border: 5px solid #f1f1f1;
+      margin: 0 auto;
+      text-align: center;
+      padding: 60px 0;
+      border-radius: 10px;
+    }
+    &__title {
+      font-size: 25px;
+      @include sectionTitle;
+      margin-bottom: 0;
+      padding-bottom: 30px;
+    }
+    &__text {
+      max-width: 415px;
+      margin: 0 auto;
+      line-height: 20px;
+    }
+    &__link {
+      color: $mainColorBlue;
+      text-decoration: underline;
+    }
+    &__phone {
+      color: $mainTextColor;
+    }
+  }
+}
+
+//Section Partners ///////////////////
+.section-partners {
+  padding: 60px 20px;
+  text-align: center;
+  .partners-list {
+    @include flex(row, space-between, center);
+    max-width: 600px;
+    margin: 40px auto 0;
+    @media screen and (max-width: 576px) {
+      flex-direction: column;
+      gap: 20px;
+    }
+    &__item {
+      height: 59px;
+    }
+    &__img {
+      height: 90%;
+      width: auto;
+    }
+  }
+}
+
+//Section Reports Info ///////////////////
+.section-reports-info {
+  padding: 60px 20px 120px;
+  @media screen and (max-width: 992px) {
+  }
+  .reports-info {
+    &__block {
+      max-width: 1060px;
+      background-color: $mainColorGrey;
+      margin: 0 auto;
+      display: flex;
+      padding: 50px 110px;
+      border-radius: 10px;
+      @media screen and (max-width: 992px) {
+        padding: 50px 60px;
+        gap: 40px;
+      }
+      @media screen and (max-width: 576px) {
+        flex-direction: column;
+        padding: 50px 20px;
+      }
+      &--left {
+        width: 30%;
+        @media screen and (max-width: 576px) {
+          width: 100%;
+          text-align: center;
+        }
+      }
+      .btn {
+        width: 140px;
+        height: 35px;
+        background-color: $mainColorBlue;
+        border-radius: 5px;
+        margin-top: 30px;
+        &__link {
+          width: 100%;
+          height: 100%;
+          @include flex(row, center, center);
+          color: $mainColorGrey;
+          font-size: 15px;
+        }
+      }
+    }
+  }
+}
+
+//Page Navigation ///////////////////
+.pages-nav {
+  text-align: center;
+  padding-top: 20px;
+  &__home-link {
+    font-size: 10px;
+    color: #000000;
+  }
+  &__current-page {
+    font-size: 10px;
+    color: #cccccc;
+  }
+}
+
+//Section All dogs ///////////////////
+.section-all-dogs {
+  margin: 0 auto;
+  padding: 40px 40px;
+  text-align: center;
+  .all-dogs {
+    &__title {
+      @include sectionTitle;
+    }
+    &__subtitle {
+      font-size: 20px;
+      font-family: "Mariupol Regular", sans-serif;
+    }
+    &__gallery {
+      padding: 45px 0;
+      margin: 0 auto;
+      max-width: 1280px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      @media screen and (max-width: 1200px) {
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: center;
+      }
+      @media screen and (max-width: 576px) {
+        grid-template-columns: 1fr;
+      }
+      .ours-dogs__slide {
+        margin: 0 auto;
+        width: 290px;
+        height: 400px;
+        border: solid 1px $mainColorGrey;
+        border-radius: 5px;
+        min-width: 0;
+        margin-bottom: 60px;
+
+        .ours-dogs__img {
+          width: 100%;
+          height: auto;
+        }
+        .dog-info {
+          display: flex;
+          flex-direction: column;
+          padding: 20px 0 0;
+          &__name {
+            font-size: 20px;
+            margin-bottom: 5px;
+          }
+          &__age {
+            font-size: 10px;
+            color: $mainColorGrey;
+            margin-bottom: 10px;
+          }
+          &__more {
+            text-decoration: underline;
+            color: $mainColorBlue;
+          }
+        }
+      }
+    }
+  }
+}
+
+//Section How to Help ///////////////////
+.section-how-to-help {
+  padding: 40px 20px;
+  text-align: center;
+  .how-to-help {
+    &__title {
+      @include sectionTitle;
+    }
+  }
+  .help-things {
+    max-width: 1060px;
+    padding: 40px 0 100px;
+    margin: 0 auto;
+    @include flex(row, center,);
+    flex-wrap: wrap;
+    gap: 40px;
+    &__block {
+      max-width: 510px;
+      min-height: 275px;
+      background-color: $mainColorGrey;
+      border-radius: 10px;
+      padding: 25px;
+      display: flex;
+      gap: 40px;
+      @media screen and (max-width: 576px) {
+        flex-direction: column;
+        width: 100%;
+      }
+    }
+    &__img-circle {
+      min-width: 150px;
+      max-width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 1px solid $borderColor;
+      background-color: $mainColorWhite;
+      @include flex(row, center, center);
+      overflow: hidden;
+      @media screen and (max-width: 576px) {
+        margin: 0 auto;
+      }
+    }
+    &__text {
+      text-align: left;
+    }
+    &__title {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+    &__list {
+      padding-left: 20px;
+    }
+    &__list-item {
+      list-style: disc;
+      font-size: 15px;
+      margin-bottom: 15px;
+    }
+  }
+}
+//Section All Reports ///////////////////
+.section-all-reports {
+  padding: 40px 20px;
+  text-align: center;
+  .all-reports {
+    &__title {
+      @include sectionTitle;
+    }
+    &__subtitle {
+      font-size: 20px;
+      font-family: "Mariupol Regular", sans-serif;
+    }
+  }
+  .report {
+    margin: 40px auto 0;
+    min-height: 290px;
+    max-width: 1060px;
+    background-color: $mainColorGrey;
+    border-radius: 10px;
+    display: flex;
+    @media screen and (max-width: 760px) {
+      flex-direction: column;
+    }
+    &__img{
+      width: 295px;
+      @media screen and (max-width: 760px) {
+        width: 100%;
+      }
+    }
+    &__text{
+      text-align: left;
+      padding: 45px;
+      @media screen and (max-width: 576px) {
+        padding: 20px;
+      }
+    }
+    &__date{
+      font-size: 15px;
+      
+    }
+    &__list{
+      padding: 25px 15px;
+    }
+    &__list-item{
+      list-style: "- ";
+      line-height: 20px;
+    }
+    &__total{
+      font-size: 15px;
+    }
+  }
+}
